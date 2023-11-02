@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+      charset="UTF-8"
+    />
+    <link rel="manifest" href="manifest.json" />
+    <link rel="shortcut icon" href="assets/favicon.png" type="image/x-icon" />
+    <link rel="stylesheet" href="styles/shared-style.css" />
+  </head>
+  <body>
+    <script>
+      if ("serviceWorker" in navigator) {
+        navigator.serviceWorker
+          .register("/service-worker.js")
+          .then((registration) => {
+            console.log(
+              "Service Worker registered with scope:",
+              registration.scope
+            );
+          })
+          .catch((error) => {
+            console.error("Service Worker registration failed:", error);
+          });
+      }
+    </script>
+    <div class="header-bar">
+        <h1>Stripe Card Reader</h1>
+      <input class="button" type="button" id="secretKeyCardAdditionButton" value="Set API secret key">
+    </div>
+    
+    <div class="wrapper-horizontal">
+      <div class="card-vertical">
+        <section class="card-form">
+          <span class="subtitle">Reader Connection</span>
+          <input
+            class="button"
+            type="button"
+            value="List readers registered"
+            id="list-readers-btn"
+          />
+          <section id="available-readers-holder" class="card"></section>
+        </section>
+
+        <section class="card-form">
+          <span class="subtitle">Payment Details</span>
+          <div class="label-input-wrapper">
+            <label for="payment-amount">Amount:</label>
+            <input type="text" placeholder="Enter transaction amount" name="payment-amount" id="payment-amount" />
+          </div>
+            <input
+              class="button"
+              type="button"
+              value="Pay"
+              id="pay-btn"
+              disabled
+            />
+            <div class="label-input-wrapper">
+              <label for="payment-status">Payment Status</label>
+              <textarea
+                type="text"
+                disabled="true"
+                id="payment-status"
+                value="No payment submitted"
+                rows="3"
+                cols="20"
+              >
+              </textarea>
+        </section>
+      </div>
+    </div>
+  </body>
+  <script type="module" src="communicator.js"></script>
+  <script type="module" src="main-controller.js"></script>
+</html>

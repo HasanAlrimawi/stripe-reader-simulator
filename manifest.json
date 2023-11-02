@@ -1,0 +1,22 @@
+{
+    "short_name": "Stripe Card Reader",
+    "name": "Stripe Card Reader",
+    "icons": [
+      {
+        "src": "assets/logo192.png",
+        "type": "image/png",
+        "sizes": "192x192"
+      },
+      {
+        "src": "assets/logo512.png",
+        "type": "image/png",
+        "sizes": "512x512"
+      }
+    ],
+    "start_url": ".",
+    "display": "standalone",
+    "theme_color": "#000000",
+    "background_color": "#ffffff",
+    "orientation": "portrait"
+  }
+  
